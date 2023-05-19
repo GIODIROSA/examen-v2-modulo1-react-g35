@@ -41,7 +41,7 @@ const ClimaForm = ({ onChangeCiudad }) => {
         />
         <button>Buscar</button>
       </form>
-      <p>{ciudad}</p>
+      <b>{ciudad&& "la ciudad es:"}</b>
     </div>
   );
 };

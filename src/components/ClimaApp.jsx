@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ClimaForm from "./ClimaForm";
+import ClimaInfo from "./ClimaInfo";
 
 const CLIMA_API_KEY = "50bb825efd244b6ba9b231431220708";
 
 const ClimaApp = () => {
   const [clima, setClima] = useState(null);
+
+  useEffect(() => {
+    loadInfo();
+  }, []);
 
   const loadInfo = async (ciudad = "berlin") => {
     try {
@@ -27,9 +32,12 @@ const ClimaApp = () => {
   return (
     <>
       <ClimaForm onChangeCiudad={handleChangeCiudad} />
-      <p>{clima?.location.name}</p>
+
+      <ClimaInfo clima={clima} />
+
+      {/* <p>{clima?.location.name}</p>
       <p>{clima?.location.region}</p>
-      <p>{clima?.location.country}</p>
+      <p>{clima?.location.country}</p> */}
     </>
   );
 };
