@@ -6,6 +6,7 @@ const urlClimaApi = `http://api.weatherapi.com/v1/current.json?key=${urlKeyApi}&
 
 const ClimaApp = () => {
   const [clima, setClima] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     loadInfo();
@@ -18,7 +19,16 @@ const ClimaApp = () => {
   const loadInfo = (ciudad = "berlin") => {
     fetch(`${urlClimaApi}${ciudad}&aqui=no`)
       .then((response) => response.json())
-      .then((data) => setClima(data));
+      .then((data) => {
+        setLoading(true);
+        setClima(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        console.log("La ciudad fue localizada");
+      });
   };
 
   const handleChangeCiudad = (ciudad) => {
@@ -29,7 +39,7 @@ const ClimaApp = () => {
   return (
     <>
       <ClimaForm onChangeCiudad={handleChangeCiudad} />
-
+      {!loading && <p>Cargando...</p>}
       <ClimaInfo clima={clima} />
     </>
   );
