@@ -26,7 +26,7 @@ const ClimaForm = ({ onChangeCiudad }) => {
       return;
     }
 
-    //enviar la ciudad que fue ingresada en el input
+    //enviando la ciudad que fue ingresada en el input
     onChangeCiudad(ciudad);
   };
 
@@ -41,7 +41,7 @@ const ClimaForm = ({ onChangeCiudad }) => {
         />
         <button>Buscar</button>
       </form>
-      <b>{ciudad&& "la ciudad es:"}</b>
+      <b>{ciudad && "la ciudad es:"}</b>
     </div>
   );
 };
