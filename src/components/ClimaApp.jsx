@@ -11,6 +11,10 @@ const ClimaApp = () => {
     loadInfo();
   }, []);
 
+  useEffect(() => {
+    document.title = "País | " + clima?.location?.name ?? "";
+  }, [clima]);
+
   const loadInfo = (ciudad = "berlin") => {
     fetch(`${urlClimaApi}${ciudad}&aqui=no`)
       .then((response) => response.json())
