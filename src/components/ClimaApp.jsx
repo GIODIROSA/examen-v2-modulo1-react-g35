@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ClimaForm from "./ClimaForm";
 import ClimaInfo from "./ClimaInfo";
-import style from "../assets/css/sectionFormulario.module.css";
 import ClimaMap from "./ClimaMap";
+import LoadingInfo from "./LoadingInfo";
+import styles from "../assets/css/sectionWidget.module.css";
 
 // variable externas
 const urlKeyApi = "50bb825efd244b6ba9b231431220708";
@@ -13,18 +14,27 @@ const ClimaApp = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(true);
 
+  //invoca la function que genera la petición a la API weather
   useEffect(() => {
     loadInfo();
   }, []);
 
+  //carga el nombre de la ciudad en la pestaña de forma dinamica
   useEffect(() => {
-    document.title = "País | " + clima?.location?.name ?? "";
+    document.title = "Ciudad: | " + clima?.location?.name ?? "";
   }, [clima]);
 
   const loadInfo = (ciudad = "berlin") => {
     fetch(`${urlClimaApi}${ciudad}&aqui=no`)
       .then((response) => response.json())
       .then((data) => {
+        let resultado = data.location.name;
+        console.log(resultado);
+        // const datos = resultado.filter((e) => e.location);
+        // console.log(datos);
+
+        // console.log("aqui lo que se filtra", datos);
+
         setTimeout(() => {
           setClima(data);
         }, 2000);
@@ -38,6 +48,7 @@ const ClimaApp = () => {
       });
   };
 
+  //captura la ciudad producto del evento click de buscar del formulario
   const handleChangeCiudad = (ciudad) => {
     setClima(null);
     loadInfo(ciudad);
@@ -45,21 +56,24 @@ const ClimaApp = () => {
 
   return (
     <>
-      <div className={style.contenedorPrincipal}>
-        <div className={style.contenedorInput}>
+      <div className={styles.contenedorTitulo}>
+        <h1 className={styles.tituloPrincipal}>Widget de clima</h1>
+        <p className={styles.parrafoPrincipal}>
+          Mini aplicación que hace la busqueda climatica por ciudad en el mundo
+        </p>
+      </div>
+      <div className={styles.contenedorPrincipal}>
+        <div className={styles.contenedorWidget}>
           <ClimaForm onChangeCiudad={handleChangeCiudad} />
-        </div>
+          <hr />
+          {/* ================================= */}
+          {/* contenido */}
+          {!error && <p>En espera...</p>}
 
-        <div className={style.contenedorMapa}>
-          {clima ? <ClimaMap clima={clima} /> : "loading..."}
+          {clima ? <ClimaInfo clima={clima} /> : <LoadingInfo />}
+          {clima ? <ClimaMap clima={clima} /> : "Cargando mapa..."}
         </div>
       </div>
-
-      {!error && <p>En espera...</p>}
-      {/* //modificar */}
-      {clima ? <ClimaInfo clima={clima} /> : "loading..."}
-
-      {loading && <p>Cargando...</p>}
     </>
   );
 };

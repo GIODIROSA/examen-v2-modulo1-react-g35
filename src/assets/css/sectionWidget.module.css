@@ -1,0 +1,44 @@
+.contenedorTitulo {
+    font-size: 2rem;
+    color: #b2a4ff;
+    font-weight: 300;
+    text-align: center;
+}
+
+.parrafoPrincipal {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 10px 0px;
+}
+
+.contenedorPrincipal {
+    width: 500px;
+    height: 500px;
+    margin: 20px auto 150px auto;
+
+}
+
+.contenedorWidget {
+    background-color: #fff;
+    height: 500;
+    width: 500px;
+    padding: 10px;
+
+}
+
+
+
+@media screen and (min-width: 300px) and (max-width: 768px) {
+    .contenedorPrincipal {
+        margin: 20px 0px;
+    }
+
+    .contenedorWidget {
+        background-color: #fff;
+        height: auto;
+        width: 100%;
+        max-width: 500px;
+    }
+
+}

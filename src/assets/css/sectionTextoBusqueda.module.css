@@ -1,0 +1,11 @@
+.contenedorTextoBusqueda {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.TextoBusqueda {
+    font-size: 1rem;
+    color: #666;
+    line-height: 28px;
+}

@@ -1,0 +1,38 @@
+.contenedorFomularion {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.inputSearch {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 18px;
+    border: 0;
+    border-radius: 3px;
+    border: 1px solid #537188;
+}
+
+.contenedorBtnBuscar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.btnBuscar {
+    margin: 20px 0px;
+    padding: 10px 50px;
+    border-radius: 4px;
+    border: 0px;
+    background-color: #ffb4b4;
+    color: #537188;
+    outline: none;
+}
+
+.btnBuscar:hover {
+    background-color: #537188;
+    color: #ffb4b4;
+    transition: background-color 0.8s ease-in-out;
+}

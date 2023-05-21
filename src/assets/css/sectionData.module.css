@@ -1,0 +1,25 @@
+.contenedorData {
+    height: 300px;
+}
+
+
+.textoPrincipal {
+    font-size: 4rem;
+    color: #666;
+    line-height: 60px;
+    font-weight: 900;
+}
+
+.textoSecundario {
+    font-size: 1rem;
+    color: #000;
+    line-height: 30px;
+    font-weight: 300;
+    margin: 0px;
+}
+
+.textoData span {
+    font-size: 2rem;
+    color: #666;
+    padding-left: 5px;
+}

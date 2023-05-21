@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+import styles from "../assets/css/sectionForm.module.css";
+import TextoBusqueda from "./TextoBusqueda";
 
 const ClimaForm = ({ onChangeCiudad }) => {
   const [ciudad, setCiudad] = useState("");
@@ -31,17 +33,20 @@ const ClimaForm = ({ onChangeCiudad }) => {
   };
 
   return (
-    <div>
+    <div className={styles.contenedorFomularion}>
       <form onSubmit={handleSubmitClima}>
         <input
+          className={styles.inputSearch}
           type="text"
           name="buscar"
           placeholder="Busca una ciudad"
           onChange={handleCiudad}
         />
-        <button>Buscar</button>
+        <div className={styles.contenedorBtnBuscar}>
+          <button className={styles.btnBuscar}>Buscar</button>
+        </div>
       </form>
-      <b>{ciudad && "la ciudad es:"}</b>
+      <b>{ciudad && <TextoBusqueda ciudad={ciudad} />}</b>
     </div>
   );
 };
