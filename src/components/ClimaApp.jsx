@@ -67,7 +67,7 @@ const ClimaApp = () => {
           <ClimaForm onChangeCiudad={handleChangeCiudad} />
           <hr />
           {/* ================================= */}
-          {/* contenido */}
+          {/* contenido  app */}
           {!error && <p>En espera...</p>}
 
           {clima ? <ClimaInfo clima={clima} /> : <LoadingInfo />}
