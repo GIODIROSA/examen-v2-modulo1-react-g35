@@ -28,16 +28,11 @@ const ClimaApp = () => {
     fetch(`${urlClimaApi}${ciudad}&aqui=no`)
       .then((response) => response.json())
       .then((data) => {
-        let resultado = data.location.name;
-        console.log(resultado);
-        // const datos = resultado.filter((e) => e.location);
-        // console.log(datos);
-
-        // console.log("aqui lo que se filtra", datos);
-
+       
         setTimeout(() => {
           setClima(data);
         }, 2000);
+
       })
       .catch((err) => {
         setError(false);
